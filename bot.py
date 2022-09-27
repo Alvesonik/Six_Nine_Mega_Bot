@@ -16,7 +16,7 @@ def greet_user(update, context):
     print("Вызван /start")
     smile = choice(settings.USER_EMOJI)
     smile = emojize(smile, use_aliases=True)
-    # print(update) 
+    print(update) 
     update.message.reply_text(f"Привет {smile}")
 
 def talk_to_me(update, context):
@@ -47,7 +47,7 @@ def guess_number(update, context):
     update.message.reply_text(message)
 
 def send_mem(update, context):
-    mem_photo_list = glob('images/mem*.jp*g')
+    mem_photo_list = glob("images/mem*.jp*g")
     mem_photo_filename = choice(mem_photo_list)
     chat_id = update.effective_chat.id
     context.bot.send_photo(chat_id=chat_id, photo=open(mem_photo_filename, 'rb'))
@@ -57,9 +57,9 @@ def main():
     # request_kwargs=PROXY
     
     md = mybot.dispatcher
-    md.add_handler(CommandHandler('start', greet_user))
-    md.add_handler(CommandHandler('guess', guess_number))
-    md.add_handler(CommandHandler('photo', send_mem))
+    md.add_handler(CommandHandler("start", greet_user))
+    md.add_handler(CommandHandler("guess", guess_number))
+    md.add_handler(CommandHandler("photo", send_mem))
     md.add_handler(MessageHandler(Filters.text, talk_to_me))
 
     logging.info("Bot starting")
