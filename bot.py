@@ -14,8 +14,10 @@ logging.basicConfig(filename="bot.log", level=logging.INFO)
 
 def greet_user(update, context):
     print("Вызван /start")
+    smile = choice(settings.USER_EMOJI)
+    smile = emojize(smile, use_aliases=True)
     # print(update) 
-    update.message.reply_text("Привет")
+    update.message.reply_text(f"Привет {smile}")
 
 def talk_to_me(update, context):
     text = update.message.text
