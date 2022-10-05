@@ -1,7 +1,7 @@
-from emoji import emojize
 from email import message
 import logging
 from urllib import request
+from emoji import emojize
 from glob import glob
 from random import randint, choice
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
@@ -14,15 +14,18 @@ logging.basicConfig(filename="bot.log", level=logging.INFO)
 
 def greet_user(update, context):
     print("Вызван /start")
-    smile = choice(settings.USER_EMOJI)
-    smile = emojize(smile, use_aliases=True)
-    print(update) 
-    update.message.reply_text(f"Привет {smile}")
+    smail = get_smile()
+    update.message.reply_text(f"Привет пользователь {smile}")
 
 def talk_to_me(update, context):
+    smail = get_smile()
     text = update.message.text
     print(text)
-    update.message.reply_text(text)
+    update.message.reply_text(f"{text} {smile}")
+
+def get_smile():
+    smile = choice(settings.USER_EMOJI)
+    return emojize(smile, use_aliases=True)
 
 def play_random_numbers(user_number):
     bot_number = randint(user_number - 100, user_number + 100)
