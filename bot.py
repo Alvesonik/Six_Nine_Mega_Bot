@@ -57,7 +57,7 @@ def send_mem(update, context):
 
 def main():
     mybot = Updater(settings.API_KEY, use_context=True)  
-    # request_kwargs=PROXY
+    # , request_kwargs=PROXY
     
     md = mybot.dispatcher
     md.add_handler(CommandHandler("start", greet_user))
