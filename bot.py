@@ -61,13 +61,13 @@ def main():
     mybot = Updater(settings.API_KEY, use_context=True)  
     # , request_kwargs=PROXY
     
-    dp = mybot.dispatcher
-    dp.add_handler(CommandHandler("start", greet_user))
-    dp.add_handler(CommandHandler("play", play_random_numbers))         
-    dp.add_handler(CommandHandler("guess", guess_number))
-    dp.add_handler(CommandHandler("photo", send_mem))
-    dp.add_handler(CommandHandler("emoji", get_smile))       
-    dp.add_handler(MessageHandler(Filters.text, talk_to_me))    
+    md = mybot.dispatcher
+    md.add_handler(CommandHandler("start", greet_user))
+    md.add_handler(CommandHandler("play", play_random_numbers))         
+    md.add_handler(CommandHandler("guess", guess_number))
+    md.add_handler(CommandHandler("photo", send_mem))
+    md.add_handler(CommandHandler("emoji", get_smile))       
+    md.add_handler(MessageHandler(Filters.text, talk_to_me))    
 
     logging.info("Bot starting")
     mybot.start_polling()
