@@ -1,11 +1,10 @@
-from email import message
-import logging
+from glob import glob
 from urllib import request
 from emoji import emojize
-from glob import glob
 from random import randint, choice
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
+import logging
 import settings
 logging.basicConfig(filename="bot.log", level=logging.INFO)
 
