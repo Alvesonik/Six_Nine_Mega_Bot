@@ -63,9 +63,11 @@ def main():
     
     md = mybot.dispatcher
     md.add_handler(CommandHandler("start", greet_user))
+    md.add_handler(CommandHandler("play", play_random_numbers))         
     md.add_handler(CommandHandler("guess", guess_number))
     md.add_handler(CommandHandler("photo", send_mem))
-    md.add_handler(MessageHandler(Filters.text, talk_to_me))
+    md.add_handler(CommandHandler("emoji", get_smile))       
+    md.add_handler(MessageHandler(Filters.text, talk_to_me))    
 
     logging.info("Bot starting")
     mybot.start_polling()
